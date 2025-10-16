@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,13 @@ class AuthController extends Controller
             'password' => $request->password,
             'name' => $request->name,
         ]);
+
+        $modules = Module::all();
+        $idsModules = [];
+        foreach ($modules as $module) {
+            $idsModules[] = $module->id;
+        }
+        $user->modules()->sync($idsModules);
 
         return response()->json([
             'id' => $user->id,

@@ -54,7 +54,7 @@ class User extends Authenticatable
     public function modules(): BelongsToMany
     {
         return $this->belongsToMany(Module::class, 'user_modules')
-            ->withPivot('active')
-            ->withPivotValue('active', false);
+            ->withPivot('active');
+            // ->withPivotValue('active', false);
     }
 }

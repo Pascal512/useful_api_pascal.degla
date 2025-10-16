@@ -23,7 +23,7 @@ class Module extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_modules')
-            ->withPivot('active')
-            ->withPivotValue('active', false);
+            ->withPivot('active');
+            // ->withPivotValue('active', false);
     }
 }

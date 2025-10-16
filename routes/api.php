@@ -14,4 +14,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 // Module
-Route::get('/modules', [ModuleController::class, 'index']);
+Route::get('/modules', [ModuleController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/modules/{id}/activate', [ModuleController::class, 'activate'])->middleware('auth:sanctum');
+Route::post('/modules/{id}/deactivate', [ModuleController::class, 'deactivate'])->middleware('auth:sanctum');
+
