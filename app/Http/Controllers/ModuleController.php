@@ -33,40 +33,6 @@ class ModuleController extends Controller
         $user->modules()->updateExistingPivot($id, [
             'active' => true,
         ]);
-        // $user->modules()->newPivotQuery()
-        //     ->where('module_id', $id)
-        //     ->update([
-        //         'active' => true,
-        //         'user_id' => $user->id,
-        //         'module_id' => $id,
-        //     ]);
-        // foreach ($user->modules as $mod) {
-        //     if ($mod && $mod->id == $id) {
-        //         $mod->pivot->active = true;
-        //     }
-        // }
-        // $user_modules = [];
-        // foreach ($user->modules as $mod) {
-        //     if ($mod && $mod->id == $id) {
-        //         $mod->pivot->active = true;
-        //         $user_modules[$mod->id] = [
-        //             'active' => true,
-        //             'user_id' => $user->id,
-        //             'module_id' => $id,
-        //         ];
-        //     } else {
-        //         $user_modules[$mod->id] = [
-        //             'active' => $mod->pivot->active,
-        //             'user_id' => $user->id,
-        //             'module_id' => $mod->id,
-        //         ];
-        //     }
-        // }
-        // $user->modules()->sync($user_modules);
-
-        return response()->json([
-            'test' => $request->path()
-        ], 200);
 
         return response()->json([
             'message' => 'Module activated'
@@ -74,7 +40,7 @@ class ModuleController extends Controller
     }
 
     /**
-     * Activate a module for the current user
+     * Deactivate a module for the current user
      */
     public function deactivate(Request $request, $id)
     {
@@ -90,23 +56,6 @@ class ModuleController extends Controller
         $request->user()->modules()->updateExistingPivot($id, [
             'active' => false,
         ]);
-        // $user->modules()->newPivotQuery()
-        //     ->where('module_id', $id)
-        //     ->update([
-        //         'active' => false,
-        //         'user_id' => $user->id,
-        //         'module_id' => $id,
-        //     ]);
-        // foreach ($user->modules as $mod) {
-        //     if ($mod && $mod->id == $id) {
-        //         $mod->pivot->active = false;
-        //         $user->save();
-        //     }
-        // }
-
-        // return response()->json([
-        //     'test' => $request->user()->modules
-        // ], 200);
 
         return response()->json([
             'message' => 'Module deactivated'
