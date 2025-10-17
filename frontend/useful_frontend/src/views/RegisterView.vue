@@ -18,9 +18,9 @@ onMounted(async function() {
   register = async function() {
     loadingRegister.value = true
     error.value = ''
-    let response = null
+    // let response = null
     try {
-      response = await authStore.register({
+      await authStore.register({
         name: name.value,
         email: email.value,
         password: password.value
